@@ -1,13 +1,10 @@
 ﻿global using Raylib_cs;
+using DesktopUI;
 
-Raylib.InitWindow(800, 800, "Hello World");
 
+GameContext context = new GameContext();
+context.Init(1200, 600);
 while (!Raylib.WindowShouldClose())
 {
-    Raylib.BeginDrawing();
-    Raylib.ClearBackground(Color.WHITE);
-
-    Raylib.EndDrawing();
+    context.Render();
 }
-
-Raylib.CloseWindow();
