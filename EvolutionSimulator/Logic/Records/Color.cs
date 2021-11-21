@@ -1,6 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-
-namespace Logic.Entities.Records;
+﻿namespace Logic.Records;
 
 public record Color(int R, int G, int B);
 

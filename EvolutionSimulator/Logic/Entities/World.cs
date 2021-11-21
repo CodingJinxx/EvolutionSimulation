@@ -1,5 +1,5 @@
 ﻿using System.Numerics;
-using Logic.Entities.Records;
+using Logic.Records;
 
 namespace Logic.Entities;
 
@@ -33,7 +33,7 @@ public class World
             }
             else
                 PopulatedAlready.Add(new Vector2<int>(X, Y));
-            Creatures[X, Y] = new Creature(X, Y);
+            Creatures[X, Y] = new Creature(X, Y, new List<Genome>());
         }
     }
 }

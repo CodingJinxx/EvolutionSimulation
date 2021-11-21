@@ -1,5 +1,5 @@
 using System;
-using Logic.Entities.Records;
+using Logic.Records;
 using Xunit;
 using Xunit.Abstractions;
 

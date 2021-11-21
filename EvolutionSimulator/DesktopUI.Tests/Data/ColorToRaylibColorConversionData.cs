@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using LogicColor = Logic.Entities.Records.Color;
+using LogicColor = Logic.Records.Color;
 using RaylibColor = Raylib_cs.Color;
 
 namespace DesktopUI.Tests.Data;

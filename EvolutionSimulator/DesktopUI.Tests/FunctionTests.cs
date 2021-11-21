@@ -2,7 +2,7 @@ using DesktopUI.Extensions;
 using DesktopUI.Extensions.Logic;
 using DesktopUI.Tests.Data;
 using Xunit;
-using LogicColor = Logic.Entities.Records.Color;
+using LogicColor = Logic.Records.Color;
 using RaylibColor = Raylib_cs.Color;
 
 namespace DesktopUI.Tests

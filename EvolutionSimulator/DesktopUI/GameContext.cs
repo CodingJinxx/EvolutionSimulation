@@ -1,4 +1,5 @@
-﻿using DesktopUI.Extensions;
+﻿using System.Numerics;
+using DesktopUI.Extensions;
 using DesktopUI.Extensions.Logic;
 using Logic.Entities;
 
@@ -10,23 +11,58 @@ public class GameContext
     private int windowWidth;
     private int windowHeight;
     private int tileSize;
+    private Camera2D camera;
+    private float speed = 200.0f;
 
     public void Init(int width, int height)
     {
         this.windowWidth = width;
         this.windowHeight = height;
-        this.tileSize = width / width.GreatestCommonDenominator(height);
+        this.tileSize = 20;
         world = new World(width / tileSize, height / tileSize);
-        world.Populate(1000);
+        world.Populate(100);
 
+        camera = new Camera2D(Vector2.Zero, Vector2.Zero, 0, 1.0f);
+
+
+        Raylib.SetTargetFPS(144);
         Raylib.InitWindow(width, height, "Evolution Simulator");
     }
 
+    public void Update()
+    {
+        var delta = Raylib.GetFrameTime();
+        if (Raylib.IsKeyDown(KeyboardKey.KEY_W))
+        {
+            camera.target += new Vector2(0, -1) * delta * speed;
+        }
+
+        if (Raylib.IsKeyDown(KeyboardKey.KEY_S))
+        {
+            camera.target += new Vector2(0, 1) * delta * speed;
+        }
+
+        if (Raylib.IsKeyDown(KeyboardKey.KEY_D))
+        {
+            camera.target += new Vector2(1, 0) * delta * speed;
+        }
+
+        if (Raylib.IsKeyDown(KeyboardKey.KEY_A))
+        {
+            camera.target += new Vector2(-1, 0) * delta * speed;
+        }
+
+        camera.zoom += Raylib.GetMouseWheelMove() * delta * 2.0f;
+    }
+
+    
     public void Render()
     {
         Raylib.BeginDrawing();
 
         Raylib.ClearBackground(Color.WHITE);
+        Raylib.BeginMode2D(camera);
+
         foreach (var creature in world.Creatures)
         {
             if (creature is not null)
@@ -36,6 +72,7 @@ public class GameContext
             }
           
         }
+        Raylib.EndMode2D();
         Raylib.EndDrawing();
     }
 }

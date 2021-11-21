@@ -1,4 +1,4 @@
-﻿using LogicColor = Logic.Entities.Records.Color;
+﻿using LogicColor = Logic.Records.Color;
 using RaylibColor = Raylib_cs.Color;
 
 namespace DesktopUI.Extensions.Logic;
